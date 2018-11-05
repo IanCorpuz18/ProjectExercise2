@@ -20,8 +20,9 @@ import CustomButton from '../assets/components/customButton'
         <Text style={styles.welcome}>
          Welcome to Ting
         </Text>
-        <Text> </Text>
+        
         <CustomButton  color="white" textColor={{color:"#00A795"}} onPress={() => this.props.navigation.navigate('Login')}>Login</CustomButton>
+        <Text></Text>
         <CustomButton  color="transparent" onPress={() => this.props.navigation.navigate('Signup1')} >Sign Up</CustomButton>
      
       </View>

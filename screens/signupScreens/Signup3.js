@@ -7,7 +7,7 @@ import {
   View,
   Button,
 } from 'react-native';
-import {  DatePicker} from 'native-base';
+import { Header, Left,  DatePicker} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomIcon from '../../assets/components/CustomIcon';
 
@@ -25,6 +25,13 @@ class Signup3 extends Component{
     }
   render() {
     return (
+      <View style={{flex:1, backgroundColor:"#00A795"}}>
+      <Header style={{ backgroundColor:"#00A795"}}>
+            <Left style={{ marginLeft: "-40%" }}>
+                <Icon  name='ios-arrow-back' size={30} color={"white"}  style={{ paddingRight: 50 }}
+                    onPress={() => this.props.navigation.goBack()} />
+            </Left>
+        </Header> 
       <View style={styles.container}>
         <Text style={styles.welcome}>
           When is Your birthday?
@@ -36,14 +43,14 @@ class Signup3 extends Component{
         <Text>  </Text>
       
         <Text style={{marginLeft:"10%", color:"white"}}> BIRTHDAY </Text>
-           <View style={{marginLeft:"9%"}}>
+           <View style={{marginLeft:"8%",borderBottomColor:"white",borderBottomWidth:1,width:"80%"}}>
             <DatePicker
             defaultDate={new Date(2018, 4, 4)}
             minimumDate={new Date(1980, 1, 1)}
             maximumDate={new Date(2018, 12, 31)}
             locale={"en"}
             timeZoneOffsetInMinutes={undefined}
-            modalTransparent={false}
+            modalTransparent={true}
             animationType={"fade"}
             androidMode={"default"}
             placeHolderText="Select date"
@@ -53,6 +60,7 @@ class Signup3 extends Component{
             />
             </View>
         <CustomIcon name="ios-arrow-dropright" size={30} onPress={() => this.props.navigation.navigate('Front')}/>
+      </View>
       </View>
     );
   }

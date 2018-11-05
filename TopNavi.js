@@ -74,7 +74,9 @@ export const Topnavi = createMaterialTopTabNavigator({
     tabBarOptions:{
         style: {
             backgroundColor:'white',
-            height:60
+            height:60,
+            borderTopColor:"gray",
+            borderTopWidth:.5
             
         },
         labelStyle:{

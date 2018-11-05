@@ -20,7 +20,7 @@ class Signup1 extends Component{
       <View style={{flex:1, backgroundColor:"#00A795"}}>
       <Header style={{ backgroundColor:"#00A795"}}>
             <Left style={{ marginLeft: "-40%" }}>
-                <Icon name='ios-arrow-dropleft' size={40}  style={{ paddingRight: 50 }}
+                <Icon  name='ios-arrow-back' size={30} color={"white"}  style={{ paddingRight: 50 }}
                     onPress={() => this.props.navigation.goBack()} />
             </Left>
         </Header> 

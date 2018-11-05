@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor:"white",
       alignItems: 'center',
+      width:"90%",
+      alignSelf:"center"
     }
 })
 
