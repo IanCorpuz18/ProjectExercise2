@@ -8,19 +8,35 @@ import {
   Button
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
-class Signup1Screen extends Component{
+import CustomInput from '../../assets/components/customInput';
+import { Header, Left, Right } from 'native-base';
+import CustomIcon from '../../assets/components/CustomIcon';
+class Signup1 extends Component{
     static navigationOptions = {
         header:null
     };
   render() {
     return (
+      <View style={{flex:1, backgroundColor:"#00A795"}}>
+      <Header style={{ backgroundColor:"#00A795"}}>
+            <Left style={{ marginLeft: "-40%" }}>
+                <Icon name='ios-arrow-dropleft' size={40}  style={{ paddingRight: 50 }}
+                    onPress={() => this.props.navigation.goBack()} />
+            </Left>
+        </Header> 
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Signup
+          What is your name?
         </Text>
-      
-        <Icon name="ios-arrow-dropright" size={100}/>
+       
+        <Text>  </Text>
+        <Text style={{marginLeft:"10%", color:"white"}}>First Name</Text>
+      <CustomInput/>
+        <Text>  </Text>
+      <Text style={{marginLeft:"10%", color:"white"}}>Last Name</Text>
+      <CustomInput/>
+        <CustomIcon name="ios-arrow-dropright" size={30} onPress={() => this.props.navigation.navigate('Signup2')}/>
+      </View>
       </View>
     );
   }
@@ -30,13 +46,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
     backgroundColor: '#00A795',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
-    margin: 10,
+    marginLeft: "10%",
+    color:"white",
+    textAlign:"left"
   },
   instructions: {
     textAlign: 'center',
@@ -45,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Signup1Screen;
+export default Signup1;

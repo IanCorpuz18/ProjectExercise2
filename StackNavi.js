@@ -18,20 +18,22 @@ import ExploreScreen from './screens/contentScreens/ExploreScreen'
 import InboxScreen from './screens/contentScreens/InboxScreen'
 import SavedScreen from './screens/contentScreens/SavedScreen'
 import { Topnavi } from './TopNavi'
-import { StackNavi } from './StackNavi'
-import { YellowBox } from 'react-native';
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
-export default class App extends Component{
-  render() {
-    return (
-     <Switchnavi/>
-    );
-  }
-}
 
-const Switchnavi = createSwitchNavigator({
-  Auth: StackNavi,
-  Main: Topnavi
+export const StackNavi = createStackNavigator({
+    
+    Front : HomeScreen,
+    Login : LoginScreen,
+    Signup1 : Signup1,
+    Signup2: Signup2,
+    Signup3: Signup3,
+    Expi: Topnavi
+
+
+
 },{
-initialRouteName: 'Auth'
-})
+    initialRouteName:'Front',
+     navigationOptions :{
+        header:null
+    }
+});
+
