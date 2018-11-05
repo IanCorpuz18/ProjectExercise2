@@ -14,6 +14,7 @@ class InboxScreen extends Component {
             <View style={{backgroundColor:"white"}}>
                 
              <Text style={styles.label}>Inbox </Text>
+             <Text style={{marginLeft:30}}>You have no unread messages </Text>
              <ScrollView>
             <View style={styles.viewContainer}>
                 {
