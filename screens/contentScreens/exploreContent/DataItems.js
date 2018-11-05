@@ -13,7 +13,7 @@ class DataItems extends Component {
   render() {
     return (
       <View style={{backgroundColor:'white' }}>
-         <Text style={{ fontSize: 30, color: '#808080', marginBottom:15, fontWeight:'normal' }}> Zurich </Text>
+         <Text style={{ fontSize: 30, color: '#808080', marginBottom:15, fontWeight:'normal' }}> Zürich </Text>
       
         <View >
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >

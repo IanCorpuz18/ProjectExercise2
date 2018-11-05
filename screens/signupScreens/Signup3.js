@@ -6,8 +6,8 @@ import {
   Text,
   View,
   Button,
-  DatePick
 } from 'react-native';
+import {  DatePicker} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomIcon from '../../assets/components/CustomIcon';
 
@@ -36,7 +36,22 @@ class Signup3 extends Component{
         <Text>  </Text>
       
         <Text style={{marginLeft:"10%", color:"white"}}> BIRTHDAY </Text>
-        <Text>  </Text>
+           <View style={{marginLeft:"9%"}}>
+            <DatePicker
+            defaultDate={new Date(2018, 4, 4)}
+            minimumDate={new Date(1980, 1, 1)}
+            maximumDate={new Date(2018, 12, 31)}
+            locale={"en"}
+            timeZoneOffsetInMinutes={undefined}
+            modalTransparent={false}
+            animationType={"fade"}
+            androidMode={"default"}
+            placeHolderText="Select date"
+            textStyle={{ color: "white" }}
+            placeHolderTextStyle={{ color: "white" }}
+            onDateChange={this.setDate}
+            />
+            </View>
         <CustomIcon name="ios-arrow-dropright" size={30} onPress={() => this.props.navigation.navigate('Front')}/>
       </View>
     );

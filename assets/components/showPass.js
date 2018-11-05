@@ -20,7 +20,7 @@ class ShowPass extends Component {
             <View style={{flexDirection:'row',alignSelf:"center"}}>
              <TextInput {...this.props}
              underlineColorAndroid="white"
-             style={{width:"70%",marginLeft:60}}
+             style={{width:"70%",marginLeft:35,color:"white"}}
              secureTextEntry={this.state.secureTextEntry}
              />
              <TouchableOpacity onPress={this.onShowPress} >

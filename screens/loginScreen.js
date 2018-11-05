@@ -72,7 +72,7 @@ inputPass=(val) =>{
                          value={this.state.email} />
                 <Text> </Text>
                 <Text style={{color:"white",marginLeft:"10%"}}>Password</Text>
-                <ShowPass style={{color:"white"}} onChangeText={text => this.inputPass(text)} 
+                <ShowPass  onChangeText={text => this.inputPass(text)} 
                 value={this.state.pass}/>
                 <Text> </Text>
                 <CustomIcon onPress={this.logIn}/>

@@ -164,4 +164,20 @@ export const saved_list = [
        img: "https://randomuser.me/api/portraits/men/4.jpg",
        date: "09 Nov 2017"
     }
+    ,
+    {
+       id: 9,
+       name: 'zzz',
+       msg: 'Hello, as we just agreed on by the phone lorem ipsum lorem ipsum lorem ipsum...',
+       img: "https://randomuser.me/api/portraits/men/4.jpg",
+       date: "09 Nov 2017"
+    }
+    ,
+    {
+       id: 10,
+       name: 'asdees',
+       msg: 'Hello, as we just agreed on by the phone lorem ipsum lorem ipsum lorem ipsum...',
+       img: "https://randomuser.me/api/portraits/men/4.jpg",
+       date: "09 Nov 2017"
+    }
 ]

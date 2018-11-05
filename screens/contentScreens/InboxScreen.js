@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image,ScrollView } from 'react-native';
 import { details } from '../../contentImages';
 class InboxScreen extends Component {
     state = {
@@ -11,8 +11,11 @@ class InboxScreen extends Component {
 
     render() {
         return (
-            <View style={styles.viewContainer}>
+            <View style={{backgroundColor:"white"}}>
+                
              <Text style={styles.label}>Inbox </Text>
+             <ScrollView>
+            <View style={styles.viewContainer}>
                 {
                     this.state.messages.map((item, index) => (
                        
@@ -22,7 +25,7 @@ class InboxScreen extends Component {
                             style={styles.container}
                             onPress={() => this.alertItemName(item)}>
                            
-                            <View style={{flexDirection: "row", width:"100%",borderBottomWidth:1,borderBottomColor:"black"}}>
+                            <View style={{flexDirection: "row", width:"100%",borderBottomWidth:1,borderBottomColor:"gray"}}>
                                 <Image source={{
                                     uri: item.img
                                 }}
@@ -53,6 +56,8 @@ class InboxScreen extends Component {
 
                     ))
                 }
+            </View>
+            </ScrollView>
             </View>
         );
     }
@@ -90,7 +95,9 @@ const styles = StyleSheet.create({
         borderRadius: 25
     },
     label:{
-        fontSize:40
+        fontSize:40,
+        textAlign:"left",
+        alignSelf:"flex-start"
     }
 })
 
