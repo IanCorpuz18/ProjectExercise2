@@ -32,24 +32,24 @@ inputPass=(val) =>{
     }
     
     logIn = () =>{
-        // if(this.state.email==='' && this.state.pass===''){
-        //     alert('Please enter your email and password.')
-        // }
-        // else if(this.state.email===''){
-        //     alert('Please enter your email.')
-        // }
-        // else if(this.state.pass===''){
-        //   alert('Please enter your password.')
-        // }
+        if(this.state.email==='' && this.state.pass===''){
+            alert('Please enter your email and password.')
+        }
+        else if(this.state.email===''){
+            alert('Please enter your email.')
+        }
+        else if(this.state.pass===''){
+          alert('Please enter your password.')
+        }
       
-        // else{
-        //   this.setState({
-        //     email: "",
-        //     pass: ""
-        //   });
+        else{
+          this.setState({
+            email: "",
+            pass: ""
+          });
           this.props.navigation.navigate('Explore')
       
-        // }
+        }
           
         }
     render() {

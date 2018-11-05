@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 const CustomButton = props => (
     <TouchableOpacity onPress={props.onPress}>
         <View style={[styles.button,{backgroundColor: props.color}]}> 
-            <Text style={{color:"white"}}>{props.children}</Text>
+            <Text style={[{color:"white"},props.textColor]}>{props.children}</Text>
         </View>
     </TouchableOpacity>
 );
