@@ -10,6 +10,8 @@ import {
     ImageBackground,
 
 } from 'react-native';
+
+import validate from './utility/validation'
 import background from '../assets/images/assets/fbg.png'
 import Icons from 'react-native-vector-icons/Ionicons';
 import { Header, Left, Right } from 'native-base';
@@ -22,64 +24,96 @@ class LoginScreen extends Component {
         header: null
     };
     state = {
-        email: "",
-        pass: "",
-        cPass:"",
+        // email: "",
+        // pass: "",
+        // cPass:"",
         disable:true,
         access: false,
-        // controls:{
-        //     email,
-        //     password,
-        //     confirmPassword
-        // }
+        controls:{
+            email:{
+                value:"",
+                valid:false,
+                validationRules:{
+                    isEmail:true
+                }
+            },
+            password:{
+                value:"",
+                valid:false,
+                validationRules:{
+                    minLength:6
+                }
+            },
+            confirmPassword:{
+                value:"",
+                valid:false,
+                validationRules:{
+                    equalTo:'password'
+                }
+            }
+        }
     }
 
-    inputEmail = (val) => {
-        this.setState({ email: val })
+    updateInputState = (key, value) => {
+        let connectedValue = {};
+        if (this.state.controls[key].validationRules.equalTo){
+            const equalControl = this.state.controls[key].validationRules.equalTo 
+            const equalValue = this.state.controls[equalControl].value;
+                connectedValue= {
+                    ...connectedValue,
+                    equalTo: equalValue
+                };
+        }
+        this.setState(prevState => {
+            return {
+                controls: {
+                    ...prevState.controls,
+                    [key] :{
+                        ...prevState.controls[key],
+                        value: value,
+                        valid: validate(value, prevState.controls[key].validationRules, connectedValue)
+                    }
+                }
+            } 
+        })
 
     }
-    inputPass = (val) => {
-        this.setState({ pass: val })
-
-    }
-    inputcPass = (val) => {
-        this.setState({cPass: val})
-    }
+  
 
     logIn = () => {
-        if (this.state.email ==="" && this.state.pass === "" && this.state.cPass === "") {
-            this.setState({access: !this.state.access})
-            // this.setState({disable: !this.state.disable})
+        // if (this.state.email ==="" && this.state.pass === "" && this.state.cPass === "") {
+        //     this.setState({access: !this.state.access})
+        //     // this.setState({disable: !this.state.disable})
 
-        }
+        // }
         
-        else if (this.state.email === '' && this.state.pass===""){
-            alert('Please enter your email & password.')
-        }
-        else if (this.state.pass === '' && this.state.cPass===""){
-            alert('Please enter your password & confirm it.')
-        }
-        else if (this.state.email === '' && this.state.cPass===""){
-            alert('Please enter your email & re-enter password.')
-        }
-        else if (this.state.email === '') {
-            alert('Please enter your email.')
-        }
-        else if (this.state.pass === '') {
-            alert('Please enter your password.')
-        }
-        else if (this.state.cPass === ""){
-            alert('Please re-enter your password.')
-        }
-        else {
-            this.setState({
-                email: "",
-                pass: "",
-                cPass:""
-            });
+        // else if (this.state.email === '' && this.state.pass===""){
+        //     alert('Please enter your email & password.')
+        // }
+        // else if (this.state.pass === '' && this.state.cPass===""){
+        //     alert('Please enter your password & confirm it.')
+        // }
+        // else if (this.state.email === '' && this.state.cPass===""){
+        //     alert('Please enter your email & re-enter password.')
+        // }
+        // else if (this.state.email === '') {
+        //     alert('Please enter your email.')
+        // }
+        // else if (this.state.pass === '') {
+        //     alert('Please enter your password.')
+        // }
+        // else if (this.state.cPass === ""){
+        //     alert('Please re-enter your password.')
+        // }
+        // else {
+        //     this.setState({
+        //         email: "",
+        //         pass: "",
+        //         cPass:""
+        //     });
             this.props.navigation.navigate('Explore')
 
-        }
+        // }
 
     }
     render() {
@@ -99,15 +133,15 @@ class LoginScreen extends Component {
         </Text>
                     <Text></Text>
                     <Text style={{ color: "white", marginLeft: "10%" }}>Email </Text>
-                    <CustomInput style={{ color: "white" }} onChangeText={text => this.inputEmail(text)}
-                        value={this.state.email} />
+                    <CustomInput  style={{ color: "white" }} onChangeText={(val) => this.updateInputState('email', val)}
+                        value={this.state.controls.email.value} />
                     <Text> </Text>
                     <Text style={{ color: "white", marginLeft: "10%" }}>Password</Text>
-                    <ShowPass onChangeText={text => this.inputPass(text)}
-                        value={this.state.pass} />
+                    <ShowPass onChangeText={(val) => this.updateInputState('password', val)}
+                        value={this.state.controls.password.value} />
                     <Text> </Text>
-                    <ShowPass onChangeText={text => this.inputcPass(text)}
-                        value={this.state.cPass} />
+                    <ShowPass onChangeText={(val) => this.updateInputState('confirmPassword', val)}
+                        value={this.state.controls.confirmPassword.value} />
                         <Text></Text>
                     <CustomIcon  accessible={this.access}  onPress={this.logIn} />
 
