@@ -27,28 +27,28 @@ class LoginScreen extends Component {
         // email: "",
         // pass: "",
         // cPass:"",
-        disable:true,
+        disable: true,
         access: false,
-        controls:{
-            email:{
-                value:"",
-                valid:false,
-                validationRules:{
-                    isEmail:true
+        controls: {
+            email: {
+                value: "",
+                valid: false,
+                validationRules: {
+                    isEmail: true
                 }
             },
-            password:{
-                value:"",
-                valid:false,
-                validationRules:{
-                    minLength:6
+            password: {
+                value: "",
+                valid: false,
+                validationRules: {
+                    minLength: 6
                 }
             },
-            confirmPassword:{
-                value:"",
-                valid:false,
-                validationRules:{
-                    equalTo:'password'
+            confirmPassword: {
+                value: "",
+                valid: false,
+                validationRules: {
+                    equalTo: 'password'
                 }
             }
         }
@@ -56,29 +56,42 @@ class LoginScreen extends Component {
 
     updateInputState = (key, value) => {
         let connectedValue = {};
-        if (this.state.controls[key].validationRules.equalTo){
-            const equalControl = this.state.controls[key].validationRules.equalTo 
+        if (this.state.controls[key].validationRules.equalTo) {
+            const equalControl = this.state.controls[key].validationRules.equalTo
             const equalValue = this.state.controls[equalControl].value;
-                connectedValue= {
-                    ...connectedValue,
-                    equalTo: equalValue
-                };
+            connectedValue = {
+                ...connectedValue,
+                equalTo: equalValue
+            };
+        }
+        if (key === 'password') {
+          
+            connectedValue = {
+                ...connectedValue,
+                equalTo: value
+            };
         }
         this.setState(prevState => {
             return {
                 controls: {
                     ...prevState.controls,
-                    [key] :{
+                    confirmPassword: prevState.controls.confirmPassword,
+                    valid: key === "password" ? validate(prevState.controls.confirmPassword.value,
+                        prevState.controls.confirmPassword.validationRules, connectedValue)
+                        : prevState.controls.confirmPassword.valid,
+                    [key]: {
                         ...prevState.controls[key],
                         value: value,
                         valid: validate(value, prevState.controls[key].validationRules, connectedValue)
                     }
+                  
+
                 }
-            } 
+            }
         })
 
     }
-  
+
 
     logIn = () => {
         // if (this.state.email ==="" && this.state.pass === "" && this.state.cPass === "") {
@@ -86,7 +99,7 @@ class LoginScreen extends Component {
         //     // this.setState({disable: !this.state.disable})
 
         // }
-        
+
         // else if (this.state.email === '' && this.state.pass===""){
         //     alert('Please enter your email & password.')
         // }
@@ -111,15 +124,15 @@ class LoginScreen extends Component {
         //         pass: "",
         //         cPass:""
         //     });
-            this.props.navigation.navigate('Explore')
+        this.props.navigation.navigate('Explore')
 
         // }
 
     }
     render() {
         return (
-                <ImageBackground source={background} style={{width:"100%",height:"100%"}}>
-           
+            <ImageBackground source={background} style={{ width: "100%", height: "100%" }}>
+
                 <Header style={{ backgroundColor: "transparent" }}>
                     <Left style={{ marginLeft: "-40%" }}>
                         <Icons name='ios-arrow-back' size={30} color={"white"} style={{ paddingRight: 50 }}
@@ -133,7 +146,7 @@ class LoginScreen extends Component {
         </Text>
                     <Text></Text>
                     <Text style={{ color: "white", marginLeft: "10%" }}>Email </Text>
-                    <CustomInput  style={{ color: "white" }} onChangeText={(val) => this.updateInputState('email', val)}
+                    <CustomInput style={{ color: "white" }} onChangeText={(val) => this.updateInputState('email', val)}
                         value={this.state.controls.email.value} />
                     <Text> </Text>
                     <Text style={{ color: "white", marginLeft: "10%" }}>Password</Text>
@@ -142,11 +155,11 @@ class LoginScreen extends Component {
                     <Text> </Text>
                     <ShowPass onChangeText={(val) => this.updateInputState('confirmPassword', val)}
                         value={this.state.controls.confirmPassword.value} />
-                        <Text></Text>
-                    <CustomIcon  accessible={this.access}  onPress={this.logIn} />
+                    <Text></Text>
+                    <CustomIcon accessible={this.access} onPress={this.logIn} />
 
                 </View>
-          
+
             </ImageBackground>
         );
     }
