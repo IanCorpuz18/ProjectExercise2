@@ -6,8 +6,10 @@ import {
     Text,
     View,
     Button,
-    TextInput
+    TextInput,
+    ImageBackground
 } from 'react-native';
+import background from '../assets/images/assets/fbg.png'
 import Icons from 'react-native-vector-icons/Ionicons';
 import { Header, Left, Right } from 'native-base';
 import ShowPass from '../assets/components/showPass';
@@ -54,8 +56,9 @@ class LoginScreen extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: "#00A795" }}>
-                <Header style={{ backgroundColor: "#00A795" }}>
+                <ImageBackground source={background} style={{width:"100%",height:"100%"}}>
+           
+                <Header style={{ backgroundColor: "transparent" }}>
                     <Left style={{ marginLeft: "-40%" }}>
                         <Icons name='ios-arrow-back' size={30} color={"white"} style={{ paddingRight: 50 }}
                             onPress={() => this.props.navigation.goBack()} />
@@ -78,8 +81,8 @@ class LoginScreen extends Component {
                     <CustomIcon onPress={this.logIn} />
 
                 </View>
-            </View>
-
+          
+            </ImageBackground>
         );
     }
 }
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor: '#00A795',
+        // backgroundColor: '#00A795',
     },
     welcome: {
         fontSize: 30,

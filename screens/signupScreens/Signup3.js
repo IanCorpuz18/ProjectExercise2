@@ -6,11 +6,12 @@ import {
   Text,
   View,
   Button,
+  ImageBackground
 } from 'react-native';
 import { Header, Left,  DatePicker} from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomIcon from '../../assets/components/CustomIcon';
-
+import background from '../../assets/images/assets/ez3.jpg'
 class Signup3 extends Component{
     static navigationOptions = {
         header:null
@@ -25,8 +26,8 @@ class Signup3 extends Component{
     }
   render() {
     return (
-      <View style={{flex:1, backgroundColor:"#00A795"}}>
-      <Header style={{ backgroundColor:"#00A795"}}>
+      <ImageBackground source={background} style={{width:"100%",height:"100%"}}>
+      <Header style={{ backgroundColor:"transparent"}}>
             <Left style={{ marginLeft: "-40%" }}>
                 <Icon  name='ios-arrow-back' size={30} color={"white"}  style={{ paddingRight: 50 }}
                     onPress={() => this.props.navigation.goBack()} />
@@ -61,7 +62,7 @@ class Signup3 extends Component{
             </View>
         <CustomIcon name="ios-arrow-dropright" size={30} onPress={() => this.props.navigation.navigate('Front')}/>
       </View>
-      </View>
+      </ImageBackground>
     );
   }
 }
@@ -69,9 +70,10 @@ class Signup3 extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    paddingTop:40,
+    // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: '#00A795',
+    // backgroundColor: '#00A795',
   },
   welcome: {
     fontSize: 30,

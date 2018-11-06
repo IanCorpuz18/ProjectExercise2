@@ -5,20 +5,22 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  ImageBackground
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomInput from '../../assets/components/customInput';
 import { Header, Left, Right } from 'native-base';
 import CustomIcon from '../../assets/components/CustomIcon';
+import background from '../../assets/images/assets/wow.jpg'
 class Signup1 extends Component{
     static navigationOptions = {
         header:null
     };
   render() {
     return (
-      <View style={{flex:1, backgroundColor:"#00A795"}}>
-      <Header style={{ backgroundColor:"#00A795"}}>
+      <ImageBackground source={background} style={{width:"100%",height:"100%"}}>
+      <Header style={{ backgroundColor:"transparent"}}>
             <Left style={{ marginLeft: "-40%" }}>
                 <Icon  name='ios-arrow-back' size={30} color={"white"}  style={{ paddingRight: 50 }}
                     onPress={() => this.props.navigation.goBack()} />
@@ -37,7 +39,8 @@ class Signup1 extends Component{
       <CustomInput/>
         <CustomIcon name="ios-arrow-dropright" size={30} onPress={() => this.props.navigation.navigate('Signup2')}/>
       </View>
-      </View>
+      
+      </ImageBackground>
     );
   }
 }
@@ -45,9 +48,9 @@ class Signup1 extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: '#00A795',
+    // backgroundColor: '#00A795',
   },
   welcome: {
     fontSize: 30,
