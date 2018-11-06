@@ -7,7 +7,8 @@ import {
     View,
     Button,
     TextInput,
-    ImageBackground
+    ImageBackground,
+
 } from 'react-native';
 import background from '../assets/images/assets/fbg.png'
 import Icons from 'react-native-vector-icons/Ionicons';
@@ -15,13 +16,22 @@ import { Header, Left, Right } from 'native-base';
 import ShowPass from '../assets/components/showPass';
 import CustomIcon from '../assets/components/CustomIcon';
 import CustomInput from '../assets/components/customInput';
+import ImageSlider from 'react-native-image-slider'
 class LoginScreen extends Component {
     static navigationOptions = {
         header: null
     };
     state = {
         email: "",
-        pass: ""
+        pass: "",
+        cPass:"",
+        disable:true,
+        access: false,
+        // controls:{
+        //     email,
+        //     password,
+        //     confirmPassword
+        // }
     }
 
     inputEmail = (val) => {
@@ -32,10 +42,25 @@ class LoginScreen extends Component {
         this.setState({ pass: val })
 
     }
+    inputcPass = (val) => {
+        this.setState({cPass: val})
+    }
 
     logIn = () => {
-        if (this.state.email === '' && this.state.pass === '') {
-            alert('Please enter your email and password.')
+        if (this.state.email ==="" && this.state.pass === "" && this.state.cPass === "") {
+            this.setState({access: !this.state.access})
+            // this.setState({disable: !this.state.disable})
+
+        }
+        
+        else if (this.state.email === '' && this.state.pass===""){
+            alert('Please enter your email & password.')
+        }
+        else if (this.state.pass === '' && this.state.cPass===""){
+            alert('Please enter your password & confirm it.')
+        }
+        else if (this.state.email === '' && this.state.cPass===""){
+            alert('Please enter your email & re-enter password.')
         }
         else if (this.state.email === '') {
             alert('Please enter your email.')
@@ -43,11 +68,14 @@ class LoginScreen extends Component {
         else if (this.state.pass === '') {
             alert('Please enter your password.')
         }
-
+        else if (this.state.cPass === ""){
+            alert('Please re-enter your password.')
+        }
         else {
             this.setState({
                 email: "",
-                pass: ""
+                pass: "",
+                cPass:""
             });
             this.props.navigation.navigate('Explore')
 
@@ -78,7 +106,10 @@ class LoginScreen extends Component {
                     <ShowPass onChangeText={text => this.inputPass(text)}
                         value={this.state.pass} />
                     <Text> </Text>
-                    <CustomIcon onPress={this.logIn} />
+                    <ShowPass onChangeText={text => this.inputcPass(text)}
+                        value={this.state.cPass} />
+                        <Text></Text>
+                    <CustomIcon  accessible={this.access}  onPress={this.logIn} />
 
                 </View>
           
