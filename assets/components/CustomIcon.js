@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     disabled:{
 
         color:"gray",
-
+ 
     }
 })
 
