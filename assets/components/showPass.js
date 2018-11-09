@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 class ShowPass extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class ShowPass extends Component {
             <View style={{flexDirection:'row',alignSelf:"center"}}>
              <TextInput {...this.props}
              underlineColorAndroid="white"
-             style={{width:"70%",marginLeft:35,color:"white"}}
+             style={[{width:"70%",marginLeft:35,color:"white"}, this.props.valid ? null : style.invalid]}
              secureTextEntry={this.state.secureTextEntry}
              />
              <TouchableOpacity onPress={this.onShowPress} >
@@ -31,7 +31,12 @@ class ShowPass extends Component {
         ) 
     }
 }
-
+const style = StyleSheet.create({
+    invalid:{
+        color:"red",
+        borderColor: "red",
+    }
+})
     
 
 

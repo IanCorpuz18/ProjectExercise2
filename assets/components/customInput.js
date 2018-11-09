@@ -6,7 +6,7 @@ const CustomInput = props =>   {
    
         return (
             <View style={{flexDirection:'column', width:"80%",alignSelf:"center"}}>
-             <TextInput {...props} underlineColorAndroid="white"  style={[{color:"white"}, props.valid ? null : style.invalid]}
+             <TextInput {...props} underlineColorAndroid="white"  style={[{color:"white"}, !props.valid && props.touched ? style.invalid : null]}
             
              />
             </View>
@@ -15,8 +15,9 @@ const CustomInput = props =>   {
 
     const style = StyleSheet.create({
         invalid: {
-            backgroundColor:"#f9c0c0",
+            color:"red",
             borderColor: "red",
+            backgroundColor:"white"
         }
     })
 

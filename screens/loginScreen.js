@@ -27,7 +27,7 @@ class LoginScreen extends Component {
         // email: "",
         // pass: "",
         // cPass:"",
-        disable: true,
+       
         access: false,
         controls: {
             email: {
@@ -35,21 +35,24 @@ class LoginScreen extends Component {
                 valid: false,
                 validationRules: {
                     isEmail: true
-                }
+                },
+                touched: false
             },
             password: {
                 value: "",
                 valid: false,
                 validationRules: {
                     minLength: 6
-                }
+                },
+                touched: false
             },
             confirmPassword: {
                 value: "",
                 valid: false,
                 validationRules: {
                     equalTo: 'password'
-                }
+                },
+                touched: false
             }
         }
     }
@@ -65,7 +68,7 @@ class LoginScreen extends Component {
             };
         }
         if (key === 'password') {
-          
+
             connectedValue = {
                 ...connectedValue,
                 equalTo: value
@@ -82,14 +85,12 @@ class LoginScreen extends Component {
                     [key]: {
                         ...prevState.controls[key],
                         value: value,
-                        valid: validate(value, prevState.controls[key].validationRules, connectedValue)
+                        valid: validate(value, prevState.controls[key].validationRules, connectedValue),
+                        touched:true
                     }
-                  
-
                 }
             }
         })
-
     }
 
 
@@ -147,16 +148,26 @@ class LoginScreen extends Component {
                     <Text></Text>
                     <Text style={{ color: "white", marginLeft: "10%" }}>Email </Text>
                     <CustomInput style={{ color: "white" }} onChangeText={(val) => this.updateInputState('email', val)}
-                        value={this.state.controls.email.value} />
+                        value={this.state.controls.email.value} 
+                        valid={this.state.controls.email.valid}
+                        touched={this.state.controls.email.touched}/>
                     <Text> </Text>
                     <Text style={{ color: "white", marginLeft: "10%" }}>Password</Text>
                     <ShowPass onChangeText={(val) => this.updateInputState('password', val)}
-                        value={this.state.controls.password.value} />
+                        value={this.state.controls.password.value}
+                        valid={this.state.controls.password.valid }
+                        touched={this.state.controls.password.touched}/>
                     <Text> </Text>
                     <ShowPass onChangeText={(val) => this.updateInputState('confirmPassword', val)}
-                        value={this.state.controls.confirmPassword.value} />
+                        value={this.state.controls.confirmPassword.value}
+                        valid={this.state.controls.confirmPassword.valid}
+                        touched={this.state.controls.confirmPassword.touched}  />
                     <Text></Text>
-                    <CustomIcon accessible={this.access} onPress={this.logIn} />
+                    <CustomIcon disabled={this.state.controls.email.valid 
+                    && this.state.controls.password.valid 
+                    && this.state.controls.confirmPassword.valid
+                    } onPress={this.logIn}
+                  />
 
                 </View>
 
